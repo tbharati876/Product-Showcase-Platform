@@ -1,0 +1,465 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ShowCase - Discover, explore and compare amazing products.">
+    <title>ShowCase | Product Showcase Platform</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="#home" class="logo" data-section="home">ShowCase<span>.</span></a>
+
+            <nav class="nav-links">
+                <a href="#home" data-section="home">Home</a>
+                <a href="#categories" data-section="categories">Categories</a>
+                <a href="#products" data-section="products">Products</a>
+                <a href="#wishlist" data-section="wishlist">Wishlist</a>
+                <a href="#compare" data-section="compare">Compare</a>
+                <a href="#reviews" data-section="reviews">Reviews</a>
+                <a href="#contact" data-section="contact">Contact</a>
+                <a href="#cart" data-section="cart">
+  🛒 Cart <span class="cart-count">0</span>
+</a>
+<a href="#checkout" data-section="checkout">
+    Checkout
+</a>
+            </nav>
+
+
+            <div id="authLinks" class="auth-links">
+                <a href="#login" onclick="showAuthForm('login')">Login</a>
+                <a href="#register" onclick="showAuthForm('register')">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+
+    <main>
+
+        <!-- HOME SECTION -->
+        <section id="home" class="page-section">
+            <div class="hero">
+                <div class="container hero-content">
+                    <div class="hero-text">
+                        <span class="hero-label">WELCOME TO SHOWCASE</span>
+
+                        <h1>Discover Products That Match Your Style</h1>
+
+                        <p>
+                            Explore amazing products, compare features,
+                            save your favourites and discover something new.
+                        </p>
+
+                        <div class="hero-actions">
+                            <button class="btn btn-primary"
+                                onclick="showSection('products')">
+                                Explore Products
+                            </button>
+
+                            <button class="btn btn-secondary"
+                                onclick="showSection('categories')">
+                                Browse Categories
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="hero-image">
+                        <img
+                            src="https://placehold.co/600x450/eee8ff/6c45d9?text=Discover+Products"
+                            alt="ShowCase product collection">
+                    </div>
+                </div>
+            </div>
+
+            <div class="container home-featured">
+                <div class="section-heading">
+                    <span>OUR COLLECTION</span>
+                    <h2>Featured Products</h2>
+                    <p>Explore some of our popular products.</p>
+                </div>
+
+                <div id="featuredProducts" class="product-grid"></div>
+
+                <div class="center-action">
+                    <button class="btn btn-primary"
+                        onclick="showSection('products')">
+                        View All Products
+                    </button>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- CATEGORIES SECTION -->
+        <section id="categories" class="page-section" hidden>
+            <div class="container section-padding">
+                <div class="section-heading">
+                    <span>EXPLORE</span>
+                    <h2>Shop by Category</h2>
+                    <p>Find products from your favourite categories.</p>
+                </div>
+
+                <div id="categoryGrid" class="category-grid"></div>
+            </div>
+        </section>
+
+
+        <!-- PRODUCTS SECTION -->
+        <section id="products" class="page-section" hidden>
+            <div class="container section-padding">
+                <div class="section-heading">
+                    <span>OUR PRODUCTS</span>
+                    <h2>Explore Our Collection</h2>
+                    <p>Search, filter and discover products.</p>
+                </div>
+
+                <div class="product-controls">
+                    <input
+                        type="search"
+                        id="searchInput"
+                        placeholder="Search products...">
+
+                    <select id="categoryFilter">
+                        <option value="all">All Categories</option>
+                    </select>
+
+                    <select id="sortFilter">
+                        <option value="default">Sort By</option>
+                        <option value="low-high">Price: Low to High</option>
+                        <option value="high-low">Price: High to Low</option>
+                        <option value="rating">Highest Rated</option>
+                    </select>
+                </div>
+
+                <div id="productGrid" class="product-grid"></div>
+
+                <p id="noProducts" class="empty-message" hidden>
+                    No products found. Try another search.
+                </p>
+            </div>
+        </section>
+
+
+        <!-- WISHLIST SECTION -->
+        <section id="wishlist" class="page-section" hidden>
+            <div class="container section-padding">
+                <div class="section-heading">
+                    <span>YOUR FAVOURITES</span>
+                    <h2>My Wishlist</h2>
+                    <p>Products you have saved for later.</p>
+                </div>
+
+                <div id="wishlistGrid" class="product-grid"></div>
+            </div>
+        </section>
+
+
+        <!-- COMPARISON SECTION -->
+        <section id="compare" class="page-section" hidden>
+            <div class="container section-padding">
+                <div class="section-heading">
+                    <span>MAKE A CHOICE</span>
+                    <h2>Compare Products</h2>
+                    <p>Compare product details side by side.</p>
+                </div>
+
+                <div id="comparisonContainer"></div>
+            </div>
+        </section>
+
+
+        <!-- REVIEWS SECTION -->
+        <section id="reviews" class="page-section" hidden>
+            <div class="container section-padding">
+                <div class="section-heading">
+                    <span>CUSTOMER FEEDBACK</span>
+                    <h2>Reviews and Ratings</h2>
+                    <p>Share your experience with our products.</p>
+                </div>
+
+                <div class="review-form-container">
+                    <form id="reviewForm" class="contact-form">
+
+                        <label for="reviewProduct">Select Product</label>
+                        <select id="reviewProduct" required>
+                            <option value="">Select a product</option>
+                        </select>
+
+                        <label for="reviewName">Your Name</label>
+                        <input
+                            type="text"
+                            id="reviewName"
+                            placeholder="Enter your name"
+                            required>
+
+                        <label for="reviewRating">Rating</label>
+                        <select id="reviewRating" required>
+                            <option value="">Select rating</option>
+                            <option value="5">5 - Excellent</option>
+                            <option value="4">4 - Very Good</option>
+                            <option value="3">3 - Good</option>
+                            <option value="2">2 - Fair</option>
+                            <option value="1">1 - Poor</option>
+                        </select>
+
+                        <label for="reviewComment">Your Review</label>
+                        <textarea
+                            id="reviewComment"
+                            rows="4"
+                            placeholder="Write your review..."
+                            required></textarea>
+
+                        <button type="submit" class="btn btn-primary">
+                            Submit Review
+                        </button>
+                    </form>
+                </div>
+
+                <h3 class="subheading">Customer Reviews</h3>
+                <div id="reviewGrid" class="review-grid"></div>
+            </div>
+        </section>
+
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="page-section" hidden>
+            <div class="container section-padding">
+                <div class="section-heading">
+                    <span>GET IN TOUCH</span>
+                    <h2>Contact Us</h2>
+                    <p>Have a question? Send us a message.</p>
+                </div>
+
+                <form id="contactForm" class="contact-form">
+                    <label for="contactName">Your Name</label>
+                    <input
+                        type="text"
+                        id="contactName"
+                        placeholder="Enter your name"
+                        required>
+
+                    <label for="contactEmail">Email Address</label>
+                    <input
+                        type="email"
+                        id="contactEmail"
+                        placeholder="Enter your email"
+                        required>
+
+                    <label for="contactMessage">Message</label>
+                    <textarea
+                        id="contactMessage"
+                        rows="5"
+                        placeholder="Write your message..."
+                        required></textarea>
+
+                    <button type="submit" class="btn btn-primary">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </section>
+
+
+        <!-- LOGIN SECTION -->
+        <section id="login" class="page-section" hidden>
+            <div class="container section-padding">
+                <div class="section-heading">
+                    <span>WELCOME BACK</span>
+                    <h2>Login to ShowCase</h2>
+                    <p>Access your account.</p>
+                </div>
+
+                <form id="loginForm" class="contact-form">
+                    <label for="loginEmail">Email Address</label>
+                    <input
+                        type="email"
+                        id="loginEmail"
+                        placeholder="Enter your email"
+                        required>
+
+                    <label for="loginPassword">Password</label>
+                    <input
+                        type="password"
+                        id="loginPassword"
+                        placeholder="Enter your password"
+                        required>
+
+                    <button type="submit" class="btn btn-primary">
+                        Login
+                    </button>
+
+                    <p>
+                        Don't have an account?
+                        <a href="#register"
+                            onclick="showAuthForm('register')">
+                            Register here
+                        </a>
+                    </p>
+                </form>
+            </div>
+        </section>
+
+
+        <!-- REGISTER SECTION -->
+        <section id="register" class="page-section" hidden>
+            <div class="container section-padding">
+                <div class="section-heading">
+                    <span>JOIN SHOWCASE</span>
+                    <h2>Create an Account</h2>
+                    <p>Register to get started.</p>
+                </div>
+
+                <form id="registerForm" class="contact-form">
+                    <label for="registerName">Full Name</label>
+                    <input
+                        type="text"
+                        id="registerName"
+                        placeholder="Enter your name"
+                        required>
+
+                    <label for="registerEmail">Email Address</label>
+                    <input
+                        type="email"
+                        id="registerEmail"
+                        placeholder="Enter your email"
+                        required>
+
+                    <label for="registerPassword">Password</label>
+                    <input
+                        type="password"
+                        id="registerPassword"
+                        placeholder="At least 6 characters"
+                        minlength="6"
+                        required>
+
+                    <button type="submit" class="btn btn-primary">
+                        Create Account
+                    </button>
+
+                    <p>
+                        Already registered?
+                        <a href="#login" onclick="showAuthForm('login')">
+                            Login here
+                        </a>
+                    </p>
+                </form>
+            </div>
+        </section>
+
+
+        <!-- ADMIN SECTION -->
+        <section id="admin" class="page-section" hidden>
+            <div class="container section-padding">
+                <div class="section-heading">
+                    <span>ADMINISTRATION</span>
+                    <h2>Admin Dashboard</h2>
+                    <p>Manage products in the ShowCase catalogue.</p>
+                </div>
+
+                <form id="adminProductForm" class="contact-form">
+                    <h3>Add a New Product</h3>
+
+                    <label for="adminProductName">Product Name</label>
+                    <input
+                        type="text"
+                        id="adminProductName"
+                        placeholder="Product name"
+                        required>
+
+                    <label for="adminProductCategory">Category</label>
+                    <select id="adminProductCategory" required>
+                        <option value="">Select category</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Fashion">Fashion</option>
+                        <option value="Books">Books</option>
+                        <option value="Home & Living">Home & Living</option>
+                        <option value="Sports & Outdoors">Sports & Outdoors</option>
+                        <option value="Gaming">Gaming</option>
+                    </select>
+
+                    <label for="adminProductPrice">Price</label>
+                    <input
+                        type="number"
+                        id="adminProductPrice"
+                        min="0.01"
+                        step="0.01"
+                        placeholder="Product price"
+                        required>
+
+                    <label for="adminProductBrand">Brand</label>
+                    <input
+                        type="text"
+                        id="adminProductBrand"
+                        placeholder="Product brand"
+                        required>
+
+                    <label for="adminProductImage">Image URL</label>
+                    <input
+                        type="url"
+                        id="adminProductImage"
+                        placeholder="https://example.com/image.jpg"
+                        required>
+
+                    <label for="adminProductDescription">Description</label>
+                    <textarea
+                        id="adminProductDescription"
+                        rows="3"
+                        placeholder="Product description"
+                        required></textarea>
+
+                    <label for="adminProductStock">Stock Status</label>
+                    <select id="adminProductStock" required>
+                        <option value="In Stock">In Stock</option>
+                        <option value="Out of Stock">Out of Stock</option>
+                        <option value="Limited Stock">Limited Stock</option>
+                    </select>
+
+                    <button type="submit" class="btn btn-primary">
+                        Add Product
+                    </button>
+                </form>
+
+                <h3 class="subheading">Manage Products</h3>
+                <div id="adminProductList"></div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <h2>ShowCase<span>.</span></h2>
+            <p>Discover. Compare. Choose.</p>
+            <p>&copy; 2026 ShowCase. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+    <!-- JAVASCRIPT FILES -->
+    <script src="js/data.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/wishlist.js"></script>
+    <script src="js/comparison.js"></script>
+    <script src="js/reviews.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/checkout.js"></script>
+    <script src="js/script.js"></script>
+
+</body>
+</html>

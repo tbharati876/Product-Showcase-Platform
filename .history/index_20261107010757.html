@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ShowCase - Discover and shop products you'll love.">
+    <title>ShowCase | Product Showcase Platform</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="container header-container">
+
+            <a href="#" class="logo" onclick="showSection('home')">
+                <span class="logo-icon">S</span>
+                <span>Show<span class="logo-highlight">Case</span></span>
+            </a>
+
+            <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle navigation">
+                ☰
+            </button>
+
+            <nav class="main-nav" id="mainNav">
+                <a href="#" onclick="showSection('home')">Home</a>
+                <a href="#" onclick="showSection('products')">Products</a>
+                <a href="#" onclick="showSection('wishlist')">Wishlist</a>
+                <a href="#" onclick="showSection('compare')">Compare</a>
+                <a href="#" onclick="showSection('contact')">Contact</a>
+            </nav>
+
+            <div class="header-actions">
+
+                <button class="header-icon" type="button" onclick="showSection('cart')" aria-label="Shopping cart">
+                    🛒
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+
+                <div class="account-wrapper">
+                    <button class="account-button" id="accountButton" type="button" onclick="toggleAccountMenu()">
+                        <span class="account-avatar">👤</span>
+                        <span id="accountName">Account</span>
+                        <span>⌄</span>
+                    </button>
+
+                    <div class="account-menu" id="accountMenu">
+                        <a href="#" onclick="showSection('profile'); toggleAccountMenu()">My Profile</a>
+                        <a href="#" onclick="showSection('orders'); toggleAccountMenu()">My Orders</a>
+                        <a href="#" onclick="showSection('login'); toggleAccountMenu()">Login</a>
+                        <a href="#" onclick="showSection('register'); toggleAccountMenu()">Sign Up</a>
+                        <a href="#" onclick="showSection('admin'); toggleAccountMenu()">Admin Panel</a>
+                        <button type="button" onclick="logout()">Logout</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- HOME -->
+        <section id="home" class="page-section active">
+
+            <div class="hero-section">
+                <div class="container hero-content">
+                    <div class="hero-text">
+                        <span class="eyebrow">DISCOVER YOUR NEXT FAVORITE</span>
+                        <h1>Find Products That <span>Match Your Style.</span></h1>
+                        <p>
+                            Explore carefully selected products, compare your favorites,
+                            and enjoy a simple shopping experience.
+                        </p>
+
+                        <div class="hero-buttons">
+                            <button class="btn btn-primary" onclick="showSection('products')">
+                                Explore Products
+                            </button>
+                            <button class="btn btn-outline" onclick="showSection('categories')">
+                                Browse Categories
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="hero-image">
+                        <img
+                            src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1200&q=85"
+                            alt="Fashion and lifestyle product collection"
+                        >
+                        <div class="hero-image-label">
+                            <span>Discover</span>
+                            <strong>Something New</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container section-spacing">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">EXPLORE</span>
+                        <h2>Shop by Category</h2>
+                    </div>
+                    <button class="text-button" onclick="showSection('categories')">View All →</button>
+                </div>
+
+                <div id="categoryContainer" class="category-grid"></div>
+            </div>
+
+            <div class="featured-banner">
+                <div class="container featured-banner-content">
+                    <div>
+                        <span class="eyebrow">CURATED FOR YOU</span>
+                        <h2>Discover Products Worth Loving.</h2>
+                        <p>Find your favorites from our growing collection.</p>
+                        <button class="btn btn-light" onclick="showSection('products')">
+                            Shop Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container section-spacing">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">HANDPICKED FOR YOU</span>
+                        <h2>Featured Products</h2>
+                    </div>
+                    <button class="text-button" onclick="showSection('products')">View All →</button>
+                </div>
+
+                <div id="featuredProducts" class="product-grid"></div>
+            </div>
+
+        </section>
+
+        <!-- CATEGORIES -->
+        <section id="categories" class="page-section">
+            <div class="container section-spacing">
+                <div class="page-heading">
+                    <span class="eyebrow">FIND YOUR STYLE</span>
+                    <h1>Explore Categories</h1>
+                    <p>Browse products from different categories.</p>
+                </div>
+                <div id="allCategories" class="category-grid"></div>
+            </div>
+        </section>
+
+        <!-- PRODUCTS -->
+        <section id="products" class="page-section">
+            <div class="products-hero">
+                <div class="container">
+                    <span class="eyebrow">THE COLLECTION</span>
+                    <h1>Discover Products</h1>
+                    <p>Explore products selected to make your everyday better.</p>
+                </div>
+            </div>
+
+            <div class="container section-spacing">
+
+                <div class="product-toolbar">
+                    <div class="search-box">
+                        <input
+                            type="search"
+                            id="searchInput"
+                            placeholder="Search products..."
+                            oninput="searchProducts()"
+                        >
+                        <span>⌕</span>
+                    </div>
+
+                    <select id="categoryFilter" onchange="filterProducts()">
+                        <option value="all">All Categories</option>
+                    </select>
+
+                    <select id="sortFilter" onchange="filterProducts()">
+                        <option value="default">Sort By</option>
+                        <option value="low-high">Price: Low to High</option>
+                        <option value="high-low">Price: High to Low</option>
+                        <option value="rating">Highest Rated</option>
+                        <option value="name">Name: A to Z</option>
+                    </select>
+                </div>
+
+                <div id="productCount" class="product-count"></div>
+                <div id="productGrid" class="product-grid"></div>
+            </div>
+        </section>
+
+        <!-- PRODUCT DETAILS -->
+        <section id="productDetails" class="page-section">
+            <div class="container section-spacing">
+                <div id="productDetailsContent"></div>
+            </div>
+        </section>
+
+        <!-- WISHLIST -->
+        <section id="wishlist" class="page-section">
+            <div class="container section-spacing">
+                <div class="page-heading">
+                    <span class="eyebrow">YOUR FAVORITES</span>
+                    <h1>My Wishlist</h1>
+                    <p>Products you've saved for later.</p>
+                </div>
+                <div id="wishlistContent" class="product-grid"></div>
+            </div>
+        </section>
+
+        <!-- COMPARISON -->
+        <section id="compare" class="page-section">
+            <div class="container section-spacing">
+                <div class="page-heading">
+                    <span class="eyebrow">MAKE A SMART CHOICE</span>
+                    <h1>Compare Products</h1>
+                    <p>Compare product features, prices, and ratings.</p>
+                </div>
+                <div id="compareContent"></div>
+            </div>
+        </section>
+
+        <!-- REVIEWS -->
+        <section id="reviews" class="page-section">
+            <div class="container section-spacing">
+                <div class="page-heading">
+                    <span class="eyebrow">CUSTOMER FEEDBACK</span>
+                    <h1>Product Reviews</h1>
+                </div>
+                <div id="reviewsContent"></div>
+            </div>
+        </section>
+
+        <!-- CART -->
+        <section id="cart" class="page-section">
+            <div class="container section-spacing">
+                <div class="page-heading">
+                    <span class="eyebrow">YOUR SHOPPING BAG</span>
+                    <h1>Shopping Cart</h1>
+                    <p>Review your selected products before checkout.</p>
+                </div>
+                <div id="cartContent"></div>
+            </div>
+        </section>
+
+        <!-- CHECKOUT -->
+        <section id="checkout" class="page-section">
+            <div class="container section-spacing">
+                <div class="page-heading">
+                    <span class="eyebrow">ALMOST YOURS</span>
+                    <h1>Checkout</h1>
+                    <p>Enter your delivery details and choose your payment method.</p>
+                </div>
+                <div id="checkoutContent"></div>
+            </div>
+        </section>
+
+        <!-- ORDERS -->
+        <section id="orders" class="page-section">
+            <div class="container section-spacing">
+                <div class="page-heading">
+                    <span class="eyebrow">YOUR PURCHASES</span>
+                    <h1>My Orders</h1>
+                    <p>View your order history and track your purchases.</p>
+                </div>
+                <div id="ordersContent"></div>
+            </div>
+        </section>
+
+        <!-- ORDER DETAILS -->
+        <section id="orderDetails" class="page-section">
+            <div class="container section-spacing">
+                <div class="page-heading">
+                    <span class="eyebrow">ORDER INFORMATION</span>
+                    <h1>Order Details</h1>
+                </div>
+                <div id="orderDetailsContent"></div>
+            </div>
+        </section>
+
+        <!-- LOGIN -->
+        <section id="login" class="page-section">
+            <div class="container auth-section">
+                <div class="auth-card">
+                    <div class="auth-heading">
+                        <span class="auth-icon">👋</span>
+                        <span class="eyebrow">WELCOME BACK</span>
+                        <h1>Login to Your Account</h1>
+                        <p>Access your profile, orders, and wishlist.</p>
+                    </div>
+
+                    <form id="loginForm" onsubmit="handleLogin(event)">
+                        <div class="form-group">
+                            <label for="loginEmail">Email Address</label>
+                            <input type="email" id="loginEmail" name="email" placeholder="Enter your email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="loginPassword">Password</label>
+                            <input type="password" id="loginPassword" name="password" placeholder="Enter your password" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-full">Login</button>
+                    </form>
+
+                    <p class="auth-switch">
+                        Don't have an account?
+                        <a href="#" onclick="showSection('register')">Create Account</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- REGISTER -->
+        <section id="register" class="page-section">
+            <div class="container auth-section">
+                <div class="auth-card">
+                    <div class="auth-heading">
+                        <span class="auth-icon">✨</span>
+                        <span class="eyebrow">JOIN SHOWCASE</span>
+                        <h1>Create Your Account</h1>
+                        <p>Sign up to start your shopping experience.</p>
+                    </div>
+
+                    <form id="registerForm" onsubmit="handleRegister(event)">
+                        <div class="form-group">
+                            <label for="registerName">Full Name</label>
+                            <input type="text" id="registerName" name="name" placeholder="Enter your full name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="registerEmail">Email Address</label>
+                            <input type="email" id="registerEmail" name="email" placeholder="Enter your email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="registerPhone">Phone Number</label>
+                            <input type="tel" id="registerPhone" name="phone" placeholder="Enter your phone number">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="registerPassword">Password</label>
+                            <input type="password" id="registerPassword" name="password" placeholder="Create a password" minlength="6" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" minlength="6" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-full">Create Account</button>
+                    </form>
+
+                    <p class="auth-switch">
+                        Already have an account?
+                        <a href="#" onclick="showSection('login')">Login</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROFILE -->
+        <section id="profile" class="page-section">
+            <div class="container section-spacing">
+                <div class="page-heading">
+                    <span class="eyebrow">YOUR ACCOUNT</span>
+                    <h1>My Profile</h1>
+                    <p>Manage your personal information and account settings.</p>
+                </div>
+                <div id="profileContent"></div>
+            </div>
+        </section>
+
+        <!-- ADMIN -->
+        <section id="admin" class="page-section">
+            <div class="container section-spacing">
+                <div class="page-heading">
+                    <span class="eyebrow">STORE MANAGEMENT</span>
+                    <h1>Admin Dashboard</h1>
+                    <p>Manage products and view store activity.</p>
+                </div>
+                <div id="adminContent"></div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="page-section">
+            <div class="container section-spacing">
+                <div class="page-heading">
+                    <span class="eyebrow">WE'RE HERE TO HELP</span>
+                    <h1>Contact Us</h1>
+                    <p>Have a question? Send us a message.</p>
+                </div>
+
+                <div class="contact-layout">
+                    <div class="contact-info">
+                        <h2>Let's Talk</h2>
+                        <p>We would love to hear from you.</p>
+                        <div class="contact-detail">✉️ support@showcase.com</div>
+                        <div class="contact-detail">📞 +91 98765 43210</div>
+                        <div class="contact-detail">📍 India</div>
+                    </div>
+
+                    <form class="contact-form" onsubmit="handleContactSubmit(event)">
+                        <div class="form-group">
+                            <label for="contactName">Your Name</label>
+                            <input type="text" id="contactName" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contactEmail">Email Address</label>
+                            <input type="email" id="contactEmail" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contactSubject">Subject</label>
+                            <input type="text" id="contactSubject" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contactMessage">Message</label>
+                            <textarea id="contactMessage" rows="5" required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+
+            <div class="footer-brand">
+                <a href="#" class="logo footer-logo" onclick="showSection('home')">
+                    <span class="logo-icon">S</span>
+                    <span>Show<span class="logo-highlight">Case</span></span>
+                </a>
+                <p>Your destination for discovering products worth loving.</p>
+            </div>
+
+            <div class="footer-column">
+                <h3>Explore</h3>
+                <a href="#" onclick="showSection('home')">Home</a>
+                <a href="#" onclick="showSection('products')">Products</a>
+                <a href="#" onclick="showSection('categories')">Categories</a>
+                <a href="#" onclick="showSection('wishlist')">Wishlist</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Your Account</h3>
+                <a href="#" onclick="showSection('profile')">My Profile</a>
+                <a href="#" onclick="showSection('orders')">My Orders</a>
+                <a href="#" onclick="showSection('cart')">Shopping Cart</a>
+                <a href="#" onclick="showSection('login')">Login</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Support</h3>
+                <a href="#" onclick="showSection('contact')">Contact Us</a>
+                <a href="#" onclick="showSection('reviews')">Reviews</a>
+                <a href="#" onclick="showSection('compare')">Compare Products</a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <p>© <span id="currentYear"></span> ShowCase. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- TOAST -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- JAVASCRIPT FILES -->
+    <script src="js/data.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/wishlist.js"></script>
+    <script src="js/comparison.js"></script>
+    <script src="js/reviews.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/checkout.js"></script>
+    <script src="js/orders.js"></script>
+    <script src="js/script.js"></script>
+
+</body>
+</html>

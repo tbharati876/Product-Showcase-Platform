@@ -1,0 +1,319 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="ShowCase - Discover, explore and compare amazing products.">
+
+    <title>ShowCase | Product Showcase Platform</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="navbar container">
+
+            <a href="#" class="logo">
+                Show<span>Case.</span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#categories">Categories</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#wishlist">Wishlist</a></li>
+                <li><a href="#comparison">Compare</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <a href="#login" class="login-link">Login</a>
+                <a href="#register" class="btn btn-primary">Sign Up</a>
+            </div>
+
+            <button class="menu-toggle" id="menuToggle"
+                aria-label="Toggle navigation">
+                ☰
+            </button>
+
+        </nav>
+    </header>
+
+
+    <main>
+
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+
+            <div class="container hero-content">
+
+                <div class="hero-text">
+                    <span class="eyebrow">DISCOVER SOMETHING NEW</span>
+
+                    <h1>
+                        Explore Products.
+                        <span>Find Your Perfect Match.</span>
+                    </h1>
+
+                    <p>
+                        Discover amazing products, explore the latest
+                        collections and compare your favourite items
+                        all in one place.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a href="#products" class="btn btn-primary">
+                            Explore Products
+                        </a>
+
+                        <a href="#categories" class="btn btn-secondary">
+                            Browse Categories
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1498049794561-7780e7231661?w=800"
+                        alt="Collection of electronic products">
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Categories Section -->
+        <section class="section" id="categories">
+
+            <div class="container">
+
+                <div class="section-heading">
+                    <span class="eyebrow">EXPLORE COLLECTIONS</span>
+                    <h2>Shop by Category</h2>
+                    <p>Find exactly what you are looking for.</p>
+                </div>
+
+                <div class="category-grid" id="categoryGrid">
+                    <!-- Categories generated using JavaScript -->
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Featured Products -->
+        <section class="section featured-section">
+
+            <div class="container">
+
+                <div class="section-heading">
+                    <span class="eyebrow">HANDPICKED FOR YOU</span>
+                    <h2>Featured Products</h2>
+                    <p>Explore some of our popular products.</p>
+                </div>
+
+                <div class="product-grid" id="featuredProducts">
+                    <!-- Featured products generated using JavaScript -->
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Product Catalog -->
+        <section class="section" id="products">
+
+            <div class="container">
+
+                <div class="section-heading">
+                    <span class="eyebrow">OUR COLLECTION</span>
+                    <h2>Explore All Products</h2>
+                    <p>Search, filter and discover your favourite products.</p>
+                </div>
+
+                <div class="catalog-controls">
+
+                    <input
+                        type="search"
+                        id="searchInput"
+                        placeholder="Search products..."
+                        aria-label="Search products">
+
+                    <select id="categoryFilter">
+                        <option value="all">All Categories</option>
+                    </select>
+
+                    <select id="sortFilter">
+                        <option value="default">Sort By</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="rating">Highest Rated</option>
+                    </select>
+
+                </div>
+
+                <div class="product-grid" id="productGrid">
+                    <!-- Products generated using JavaScript -->
+                </div>
+
+                <p id="noProducts" class="empty-message" hidden>
+                    No products found.
+                </p>
+
+            </div>
+        </section>
+
+
+        <!-- Wishlist -->
+        <section class="section alternate-section" id="wishlist">
+
+            <div class="container">
+
+                <div class="section-heading">
+                    <span class="eyebrow">YOUR COLLECTION</span>
+                    <h2>My Wishlist</h2>
+                    <p>Your favourite products in one place.</p>
+                </div>
+
+                <div class="product-grid" id="wishlistGrid">
+                    <!-- Wishlist products generated using JavaScript -->
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Product Comparison -->
+        <section class="section" id="comparison">
+
+            <div class="container">
+
+                <div class="section-heading">
+                    <span class="eyebrow">MAKE SMARTER CHOICES</span>
+                    <h2>Compare Products</h2>
+                    <p>Compare product features and specifications.</p>
+                </div>
+
+                <div id="comparisonContainer">
+                    <p class="empty-message">
+                        Select products to start comparing.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Customer Reviews -->
+        <section class="section alternate-section" id="reviews">
+
+            <div class="container">
+
+                <div class="section-heading">
+                    <span class="eyebrow">CUSTOMER FEEDBACK</span>
+                    <h2>What Customers Say</h2>
+                    <p>Discover experiences shared by our customers.</p>
+                </div>
+
+                <div class="review-grid" id="reviewGrid">
+                    <!-- Reviews generated using JavaScript -->
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Contact Section -->
+        <section class="section" id="contact">
+
+            <div class="container">
+
+                <div class="section-heading">
+                    <span class="eyebrow">GET IN TOUCH</span>
+                    <h2>Contact Us</h2>
+                    <p>Have questions? We would love to hear from you.</p>
+                </div>
+
+                <form id="contactForm" class="contact-form">
+
+                    <input
+                        type="text"
+                        id="contactName"
+                        placeholder="Your Name"
+                        required>
+
+                    <input
+                        type="email"
+                        id="contactEmail"
+                        placeholder="Your Email"
+                        required>
+
+                    <textarea
+                        id="contactMessage"
+                        placeholder="Your Message"
+                        rows="5"
+                        required></textarea>
+
+                    <button type="submit" class="btn btn-primary">
+                        Send Message
+                    </button>
+
+                </form>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+
+        <div class="container footer-content">
+
+            <div>
+                <a href="#" class="logo">
+                    Show<span>Case.</span>
+                </a>
+
+                <p>
+                    Discover, explore and compare products
+                    with confidence.
+                </p>
+            </div>
+
+            <p>
+                &copy; 2026 ShowCase. All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JavaScript Files -->
+    <script src="js/data.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/wishlist.js"></script>
+    <script src="js/comparison.js"></script>
+    <script src="js/reviews.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/script.js"></script>
+
+</body>
+</html>

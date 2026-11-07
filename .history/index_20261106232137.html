@@ -1,0 +1,466 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ShowCase - Discover premium products across electronics, fashion, books, gaming and more.">
+    <title>ShowCase | Discover Amazing Products</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- ANNOUNCEMENT BAR -->
+    <div class="announcement-bar">
+        <p>✨ Welcome to ShowCase — Discover products you'll love!</p>
+    </div>
+
+    <!-- HEADER -->
+    <header class="main-header">
+        <div class="nav-container">
+
+            <a href="#home" class="logo" data-section="home">
+                <span class="logo-icon">S</span>
+                <span>Show<span class="logo-highlight">Case</span></span>
+            </a>
+
+            <nav class="nav-links" id="mainNavigation">
+                <a href="#home" data-section="home">Home</a>
+                <a href="#categories" data-section="categories">Categories</a>
+                <a href="#products" data-section="products">Products</a>
+                <a href="#wishlist" data-section="wishlist">Wishlist</a>
+                <a href="#compare" data-section="compare">Compare</a>
+                <a href="#reviews" data-section="reviews">Reviews</a>
+                <a href="#contact" data-section="contact">Contact</a>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="#cart" data-section="cart" class="cart-link">
+                    🛒 Cart <span class="cart-count">0</span>
+                </a>
+
+                <a href="#orders" data-section="orders">My Orders</a>
+
+                <div class="auth-links" id="authNavigation">
+                    <a href="#login" data-section="login">Login</a>
+                    <a href="#register" data-section="register" class="nav-register">Sign Up</a>
+                </div>
+            </div>
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open navigation">
+                ☰
+            </button>
+
+        </div>
+    </header>
+
+    <main>
+
+        <!-- HOME SECTION -->
+        <section id="home" class="page-section">
+
+            <!-- HERO BANNER -->
+            <div class="hero-section">
+                <div class="hero-content">
+
+                    <div class="hero-text">
+                        <span class="hero-badge">YOUR NEXT FAVORITE FIND</span>
+
+                        <h1>
+                            Discover Products<br>
+                            <span>You'll Love.</span>
+                        </h1>
+
+                        <p>
+                            Explore a world of amazing products, discover new trends
+                            and find everything you need in one place.
+                        </p>
+
+                        <div class="hero-buttons">
+                            <a href="#products" data-section="products" class="btn-primary">
+                                Explore Products →
+                            </a>
+
+                            <a href="#categories" data-section="categories" class="btn-secondary">
+                                Browse Categories
+                            </a>
+                        </div>
+
+                        <div class="hero-stats">
+                            <div>
+                                <strong>500+</strong>
+                                <span>Products</span>
+                            </div>
+                            <div>
+                                <strong>6+</strong>
+                                <span>Categories</span>
+                            </div>
+                            <div>
+                                <strong>100%</strong>
+                                <span>Experience</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hero-image">
+                        <img
+                            src="https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=1000&q=85"
+                            alt="Premium electronics product collection"
+                        >
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- BENEFITS -->
+            <div class="benefits-section">
+                <div class="benefit-item">
+                    <span>🚚</span>
+                    <div>
+                        <h3>Fast Delivery</h3>
+                        <p>Convenient shopping experience</p>
+                    </div>
+                </div>
+
+                <div class="benefit-item">
+                    <span>🔒</span>
+                    <div>
+                        <h3>Secure Shopping</h3>
+                        <p>Demo account protection</p>
+                    </div>
+                </div>
+
+                <div class="benefit-item">
+                    <span>⭐</span>
+                    <div>
+                        <h3>Top Products</h3>
+                        <p>Explore popular collections</p>
+                    </div>
+                </div>
+
+                <div class="benefit-item">
+                    <span>💬</span>
+                    <div>
+                        <h3>Customer Reviews</h3>
+                        <p>Share your experience</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FEATURED PRODUCTS -->
+            <section class="content-section">
+                <div class="section-heading">
+                    <div>
+                        <span class="section-tag">HANDPICKED FOR YOU</span>
+                        <h2>Featured Products</h2>
+                        <p>Discover some of our most popular products.</p>
+                    </div>
+
+                    <a href="#products" data-section="products" class="text-link">
+                        View All Products →
+                    </a>
+                </div>
+
+                <div id="featuredProducts" class="product-grid"></div>
+            </section>
+
+            <!-- CATEGORY PREVIEW -->
+            <section class="content-section">
+                <div class="section-heading">
+                    <div>
+                        <span class="section-tag">EXPLORE COLLECTIONS</span>
+                        <h2>Shop by Category</h2>
+                        <p>Find products that match your interests.</p>
+                    </div>
+
+                    <a href="#categories" data-section="categories" class="text-link">
+                        All Categories →
+                    </a>
+                </div>
+
+                <div id="categoryGrid" class="category-grid"></div>
+            </section>
+
+            <!-- PROMOTIONAL BANNER -->
+            <section class="promo-banner">
+                <div>
+                    <span>MAKE YOUR NEXT DISCOVERY</span>
+                    <h2>Great products. Great choices.</h2>
+                    <p>Explore the complete ShowCase collection today.</p>
+                    <a href="#products" data-section="products" class="btn-primary">
+                        Start Exploring →
+                    </a>
+                </div>
+            </section>
+
+        </section>
+
+        <!-- CATEGORIES SECTION -->
+        <section id="categories" class="page-section" style="display:none;">
+            <div class="page-heading">
+                <span class="section-tag">EXPLORE OUR COLLECTIONS</span>
+                <h1>Shop by Category</h1>
+                <p>Choose a category to discover its products.</p>
+            </div>
+
+            <div id="allCategories" class="category-grid"></div>
+        </section>
+
+        <!-- PRODUCTS SECTION -->
+        <section id="products" class="page-section" style="display:none;">
+
+            <div class="page-heading">
+                <span class="section-tag">OUR COLLECTION</span>
+                <h1>Explore All Products</h1>
+                <p>Discover products across all your favorite categories.</p>
+            </div>
+
+            <div class="product-toolbar">
+
+                <div class="search-box">
+                    <span>🔍</span>
+                    <input
+                        type="search"
+                        id="searchInput"
+                        placeholder="Search products, brands..."
+                    >
+                </div>
+
+                <select id="categoryFilter">
+                    <option value="">All Categories</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Fashion">Fashion</option>
+                    <option value="Books">Books</option>
+                    <option value="Home & Living">Home & Living</option>
+                    <option value="Sports & Outdoors">Sports & Outdoors</option>
+                    <option value="Gaming">Gaming</option>
+                </select>
+
+                <select id="sortFilter">
+                    <option value="default">Sort By: Recommended</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="rating">Highest Rated</option>
+                    <option value="name">Name: A to Z</option>
+                </select>
+
+            </div>
+
+            <div id="activeCategory" class="active-category"></div>
+
+            <div id="productGrid" class="product-grid"></div>
+
+            <div id="noProducts" class="empty-state" style="display:none;">
+                <div>🔎</div>
+                <h3>No products found</h3>
+                <p>Try another search or category.</p>
+            </div>
+
+        </section>
+
+        <!-- WISHLIST SECTION -->
+        <section id="wishlist" class="page-section" style="display:none;">
+            <div class="page-heading">
+                <span class="section-tag">YOUR FAVORITES</span>
+                <h1>My Wishlist</h1>
+                <p>All the products you have saved in one place.</p>
+            </div>
+
+            <div id="wishlistGrid" class="product-grid"></div>
+        </section>
+
+        <!-- COMPARISON SECTION -->
+        <section id="compare" class="page-section" style="display:none;">
+            <div class="page-heading">
+                <span class="section-tag">MAKE BETTER DECISIONS</span>
+                <h1>Compare Products</h1>
+                <p>Compare features, prices and ratings before choosing.</p>
+            </div>
+
+            <div id="comparisonContainer"></div>
+        </section>
+
+        <!-- REVIEWS SECTION -->
+        <section id="reviews" class="page-section" style="display:none;">
+            <div class="page-heading">
+                <span class="section-tag">CUSTOMER EXPERIENCES</span>
+                <h1>Customer Reviews</h1>
+                <p>Read experiences and share your product feedback.</p>
+            </div>
+
+            <div id="reviewGrid" class="review-grid"></div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="page-section" style="display:none;">
+            <div class="page-heading">
+                <span class="section-tag">WE'RE HERE TO HELP</span>
+                <h1>Contact Us</h1>
+                <p>Have a question? Send us a message.</p>
+            </div>
+
+            <div class="contact-container">
+
+                <div class="contact-information">
+                    <h2>Let's talk.</h2>
+                    <p>We would love to hear from you.</p>
+
+                    <div class="contact-info-item">
+                        <span>📧</span>
+                        <div>
+                            <strong>Email</strong>
+                            <p>support@showcase.demo</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <span>🛍️</span>
+                        <div>
+                            <strong>Shopping Support</strong>
+                            <p>Questions about products and orders</p>
+                        </div>
+                    </div>
+                </div>
+
+                <form id="contactForm" class="contact-form">
+                    <label for="contactName">Your Name</label>
+                    <input type="text" id="contactName" name="name" placeholder="Enter your name" required>
+
+                    <label for="contactEmail">Email Address</label>
+                    <input type="email" id="contactEmail" name="email" placeholder="Enter your email" required>
+
+                    <label for="contactMessage">Message</label>
+                    <textarea id="contactMessage" name="message" rows="5" placeholder="How can we help you?" required></textarea>
+
+                    <button type="submit" class="btn-primary">Send Message →</button>
+                </form>
+
+            </div>
+        </section>
+
+        <!-- CART SECTION -->
+        <section id="cart" class="page-section" style="display:none;">
+            <div class="page-heading">
+                <span class="section-tag">YOUR SHOPPING BAG</span>
+                <h1>Shopping Cart</h1>
+                <p>Review your selected products.</p>
+            </div>
+
+            <div id="cartContent"></div>
+        </section>
+
+        <!-- CHECKOUT SECTION -->
+        <section id="checkout" class="page-section" style="display:none;">
+            <div class="page-heading">
+                <span class="section-tag">ALMOST THERE</span>
+                <h1>Checkout</h1>
+                <p>Enter your details to place your demo order.</p>
+            </div>
+
+            <div id="checkoutContent"></div>
+        </section>
+
+        <!-- ORDER HISTORY SECTION -->
+        <section id="orders" class="page-section" style="display:none;">
+            <div class="page-heading">
+                <span class="section-tag">YOUR PURCHASES</span>
+                <h1>My Orders</h1>
+                <p>Review your previous purchases.</p>
+            </div>
+
+            <div id="ordersContent"></div>
+        </section>
+
+        <!-- LOGIN SECTION -->
+        <section id="login" class="page-section" style="display:none;">
+            <div id="loginContainer"></div>
+        </section>
+
+        <!-- REGISTER SECTION -->
+        <section id="register" class="page-section" style="display:none;">
+            <div id="registerContainer"></div>
+        </section>
+
+        <!-- ADMIN SECTION -->
+        <section id="admin" class="page-section" style="display:none;">
+            <div id="adminContainer"></div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="footer-container">
+
+            <div class="footer-brand">
+                <a href="#home" data-section="home" class="logo footer-logo">
+                    <span class="logo-icon">S</span>
+                    <span>Show<span class="logo-highlight">Case</span></span>
+                </a>
+
+                <p>
+                    Discover amazing products, explore collections
+                    and enjoy a better product showcase experience.
+                </p>
+            </div>
+
+            <div class="footer-column">
+                <h3>Explore</h3>
+                <a href="#home" data-section="home">Home</a>
+                <a href="#categories" data-section="categories">Categories</a>
+                <a href="#products" data-section="products">Products</a>
+                <a href="#wishlist" data-section="wishlist">Wishlist</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Account</h3>
+                <a href="#login" data-section="login">Login</a>
+                <a href="#register" data-section="register">Register</a>
+                <a href="#cart" data-section="cart">Shopping Cart</a>
+                <a href="#orders" data-section="orders">My Orders</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Support</h3>
+                <a href="#reviews" data-section="reviews">Reviews</a>
+                <a href="#contact" data-section="contact">Contact Us</a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 ShowCase. All rights reserved. Demo shopping platform.</p>
+        </div>
+    </footer>
+
+    <!-- PRODUCT DETAILS MODAL -->
+    <div id="productModal" class="product-modal" style="display:none;">
+        <div class="product-modal-content" id="productModalContent">
+            <button class="modal-close" onclick="closeProductModal()" aria-label="Close">×</button>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- JAVASCRIPT FILES -->
+    <script src="js/data.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/wishlist.js"></script>
+    <script src="js/comparison.js"></script>
+    <script src="js/reviews.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/checkout.js"></script>
+    <script src="js/orders.js"></script>
+    <script src="js/script.js"></script>
+
+</body>
+</html>
