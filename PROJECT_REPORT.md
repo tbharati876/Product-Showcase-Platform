@@ -6,8 +6,10 @@
 **Technologies:** HTML5, CSS3, JavaScript  
 **Deployment Platform:** Vercel  
 **Source Code:** https://github.com/tbharati876/Product-Showcase-Platform
+
 **Live Website:** https://product-showcase-platform.vercel.app/
-**YouTube Demonstration:** 
+
+**YouTube Demonstration:** https://youtu.be/8iZcdq0II5M
 
 ---
 
