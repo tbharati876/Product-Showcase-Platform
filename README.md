@@ -1,5 +1,8 @@
 # ShowCase – Product Showcase Platform
 
+## Project Task Link:
+https://www.freeinternships.in/web-development-internship/virtual-web-development-internship-free-complete-product-catalog-demonstration-platform-wd-sw-003.php
+
 ## Project Overview
 
 ShowCase is a responsive product showcase and shopping platform that allows users to explore products across multiple categories, compare product features, manage wishlists, and place orders.
