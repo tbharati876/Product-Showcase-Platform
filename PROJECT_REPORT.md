@@ -9,8 +9,6 @@
 
 **Live Website:** https://product-showcase-platform.vercel.app/
 
-**YouTube Demonstration:** https://youtu.be/8iZcdq0II5M
-
 ---
 
 ## 1. Project Objective
